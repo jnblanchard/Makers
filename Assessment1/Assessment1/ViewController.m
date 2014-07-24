@@ -7,10 +7,32 @@
 @end
 
 @implementation ViewController
+BOOL negativeStateOne = NO;
+BOOL negativeStateTwo = NO;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (IBAction)negativeStateForComponentOne:(id)sender {
+    if(negativeStateOne == NO) {
+        negativeStateOne = YES;
+        self.componentOneTextField.text = [@"-" stringByAppendingString:self.componentOneTextField.text];
+    }else {
+        self.componentOneTextField.text = [self.componentOneTextField.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        negativeStateOne = NO;
+    }
+}
+
+- (IBAction)negativeStateForComponentTwo:(id)sender {
+    if(negativeStateTwo == NO) {
+        negativeStateTwo = YES;
+        self.componentTwoTextField.text = [@"-" stringByAppendingString:self.componentTwoTextField.text];
+    }else {
+        negativeStateTwo = NO;
+        self.componentTwoTextField.text = [self.componentTwoTextField.text stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    }
 }
 
 /* multiplyComponents() - instance method (Multiply Button)    */
